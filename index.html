@@ -19,6 +19,7 @@
             color: white;
             padding: 20px;
             text-align: center;
+            border-radius: 15px; /* Rounds the edges of the header */
         }
         header h1 {
             margin: 0;
@@ -36,44 +37,31 @@
             background-size: cover;
         }
         .colored-block {
-    background-color: #f7b80a;
-    border-radius: 15px; /* Adjust the value to make the edges more or less rounded */
-    padding: 20px; /* Adds padding inside the block */
-    width: fit-content; /* Makes the block fit the content (you can adjust the width if needed) */
-    margin-top: 40px;
-    margin-bottom: 20px;
-    margin-left: 40px;/* adjusts the top space */
- /* Adds some space around the block */
-}
-
-.colored-block-text {
-    color: #ffffff; /* Makes the text white, you can adjust as needed */
-    margin: 0; /* Removes any default margin around the heading */
-    text-align: left;
-    font-size: 24px;
-    /* Centers the heading inside the block */
-}
-        .cover-photo-text {
+            background-color: #f7b80a;
+            border-radius: 15px; /* Rounds the edges of the block */
+            padding: 20px;
+            width: fit-content;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: right;
+            bottom: 20px; /* Positions the block at the bottom */
+            left: 50%; /* Centers horizontally */
+            transform: translateX(-50%); /* Centers the block */
         }
-        .cover-photo-text h2 {
+        .colored-block-text {
+            color: white; /* White text inside the block */
+            margin: 0;
+            text-align: left;
             font-size: 24px;
-            font-weight: bold;
         }
-        .cover-photo-text button {
+        .colored-block button {
             background-color: #D32F2F;
             color: white;
             padding: 10px 20px;
             font-size: 16px;
             border: none;
             cursor: pointer;
+            margin-top: 10px;
         }
-        .cover-photo-text button:hover {
+        .colored-block button:hover {
             background-color: #f7b80a;
         }
         .download-section {
@@ -112,20 +100,18 @@
 </head>
 <body>
     <header>
-        <h1>Free Effective Planner &
-            Personal Goals Manager</h1>
+        <h1>Free Effective Planner & Personal Goals Manager</h1>
         <p>Inspired by Stephen Covey's The 7 Habits of Highly Effective People</p>
     </header>
 
     <!-- Cover photo section -->
     <div class="cover-photo">
         <div class="colored-block">
-    <div> 
-        <p><span style="color: green;">✔️</span> manage time</p>
-        <p><span style="color: green;">✔️</span> personal development</p>
-        <p><span style="color: green;">✔️</span> set smart goals</p>
-    </div>
-
+            <div class="colored-block-text">
+                <p><span style="color: green;">✔️</span> manage time</p>
+                <p><span style="color: green;">✔️</span> personal development</p>
+                <p><span style="color: green;">✔️</span> set smart goals</p>
+            </div>
             <button>Download Now</button>
         </div>
     </div>
