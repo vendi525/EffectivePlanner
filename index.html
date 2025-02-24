@@ -35,6 +35,19 @@
             background: url(effective_planner_colour.PNG) no-repeat center center;
             background-size: cover;
         }
+        .colored-block {
+    background-color: #f7b80a;
+    border-radius: 15px; /* Adjust the value to make the edges more or less rounded */
+    padding: 20px; /* Adds padding inside the block */
+    width: fit-content; /* Makes the block fit the content (you can adjust the width if needed) */
+    margin: 20px 0; /* Adds some space around the block */
+}
+
+.colored-block h2 {
+    color: white; /* Makes the text white, you can adjust as needed */
+    margin: 0; /* Removes any default margin around the heading */
+    text-align: left; /* Centers the heading inside the block */
+}
         .cover-photo-text {
             position: absolute;
             top: 50%;
@@ -101,12 +114,12 @@
 
     <!-- Cover photo section -->
     <div class="cover-photo">
-        <div class="cover-photo-text">
-         <h2>
-          <p><span style="color: green;">✔️</span> manage time</p>
-          <p><span style="color: green;">✔️</span> personal development</p>
-          <p><span style="color: green;">✔️</span> set smart goals</p>
-        </h2>
+        <div class="colored-block">
+    <h2> 
+        <p><span style="color: green;">✔️</span> manage time</p>
+        <p><span style="color: green;">✔️</span> personal development</p>
+        <p><span style="color: green;">✔️</span> set smart goals</p>
+    </h2>
 
             <button>Download Now</button>
         </div>
