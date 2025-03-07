@@ -44,25 +44,26 @@
             line-height: 1.6;
         }
 
-        /* Button styles */
+        /* Button styles - more square, Apple-inspired */
         .btn {
             display: inline-block;
             background-color: #c21a1a;
             color: white;
-            padding: 12px 25px;
+            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 25px;
+            border-radius: 8px; /* Much less rounded, more square */
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
             border: none;
             cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .btn:hover {
             background-color: #a01515;
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         .btn-sm {
@@ -90,17 +91,18 @@
             margin-bottom: 0;
         }
 
-        /* Hero section */
+        /* Hero section - centered for mobile */
         .hero {
             text-align: center;
             padding: 2rem 1rem;
             padding-top: 6rem; /* Add extra padding for fixed header */
             position: relative;
-            min-height: 80vh;
+            min-height: 90vh; /* Taller to allow for center positioning */
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%), url('ef_cover_photo_2.jpg');
+            justify-content: center; /* Center content vertically */
+            align-items: center; /* Center content horizontally */
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%), url('ef_planner_cover_photo.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -111,7 +113,7 @@
         }
 
         .hero p {
-            max-width: 80%;
+            max-width: 90%;
             margin: 0 auto 3rem;
             font-size: 1rem;
         }
@@ -152,7 +154,7 @@
         .download {
             background-color: #ffe8d9;
             padding: 2rem 1rem;
-            border-radius: 15px;
+            border-radius: 12px; /* Less rounded */
             margin-bottom: 3rem;
         }
 
@@ -194,6 +196,7 @@
                 padding: 8rem 2rem 4rem;
                 text-align: left;
                 align-items: flex-start;
+                justify-content: flex-start;
             }
 
             .hero h2 {
