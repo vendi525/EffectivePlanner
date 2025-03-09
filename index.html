@@ -545,208 +545,161 @@
         </div>
     </div>
 
-    <script>
-        // Gallery Slider Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            // Gallery variables
-            let currentSlide = 0;
-            let currentGallery = 'color';
-        });
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // MODAL VARIABLES
+        const modal = document.getElementById('theme-modal');
+        const modalTitle = document.querySelector('.modal-content h3');
+        const colorThemeBtn = document.getElementById('color-theme-btn');
+        const blackThemeBtn = document.getElementById('black-theme-btn');
         
+        // BUTTONS
+        const openPlannerBtns = document.querySelectorAll('.open-planner-btn');
+        const pdfDownloadBtns = document.querySelectorAll('.download-btn.pdf');
+        const docxDownloadBtns = document.querySelectorAll('.download-btn.docx');
+        
+        // GALLERY TOGGLE
+        const colorToggle = document.getElementById('color-toggle');
+        const blackToggle = document.getElementById('black-toggle');
+        
+        // GALLERY VARIABLES
+        const colorGallery = document.querySelector('.color-gallery');
+        const blackGallery = document.querySelector('.black-gallery');
+        const slideDots = document.querySelectorAll('.slide-dot');
+        const prevArrow = document.querySelector('.prev-arrow');
+        const nextArrow = document.querySelector('.next-arrow');
+
+        let currentAction = ''; // Tracks whether we're opening, downloading PDF, or downloading DOCX
+
+        // FUNCTION TO OPEN MODAL
+        function openModal(actionType, titleText) {
+            currentAction = actionType;
+            modalTitle.textContent = titleText;
+            modal.style.display = 'flex';
+        }
+
+        // EVENT LISTENERS FOR OPENING MODAL
         openPlannerBtns.forEach(btn => {
-                 btn.addEventListener('click', function(e) {
-                     e.preventDefault();
-                     modal.style.display = 'flex';
-                 });
-             });
-             
-             downloadBtns.forEach(btn => {
-                 btn.addEventListener('click', function(e) {
-                     e.preventDefault();
-                     modal.style.display = 'flex';
-                 });
-             });
-             
-             // Close modal when selecting a theme
-            const colorGallery = document.querySelector('.color-gallery');
-            const blackGallery = document.querySelector('.black-gallery');
-            const colorToggle = document.getElementById('color-toggle');
-            const blackToggle = document.getElementById('black-toggle');
-            const slideDots = document.querySelectorAll('.slide-dot');
-            const prevArrow = document.querySelector('.prev-arrow');
-            const nextArrow = document.querySelector('.next-arrow');
-            
-            // Modal variables
-            const modal = document.getElementById('theme-modal');
-            const colorThemeBtn = document.getElementById('color-theme-btn');
-            const blackThemeBtn = document.getElementById('black-theme-btn');
-            const openPlannerBtns = document.querySelectorAll('.open-planner-btn');
-            const downloadBtns = document.querySelectorAll('.download-btn');
-            
-            // Gallery toggle functionality
-            colorToggle.addEventListener('click', function() {
-                currentGallery = 'color';
-                colorToggle.classList.add('active');
-                blackToggle.classList.remove('active');
-                colorGallery.style.display = 'flex';
-                blackGallery.style.display = 'none';
-                updateSlider();
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal('open', 'Which version would you like to open?');
             });
-            
-            blackToggle.addEventListener('click', function() {
-                currentGallery = 'black';
-                blackToggle.classList.add('active');
-                colorToggle.classList.remove('active');
-                blackGallery.style.display = 'flex';
-                colorGallery.style.display = 'none';
-                updateSlider();
+        });
+
+        pdfDownloadBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal('pdf', 'Which version would you like to download?');
             });
-            
-            // Slider navigation
-            function goToSlide(slideIndex) {
-                currentSlide = slideIndex;
-                updateSlider();
+        });
+
+        docxDownloadBtns.forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                openModal('docx', 'Which version would you like to download?');
+            });
+        });
+
+        // FUNCTION TO HANDLE MODAL CHOICES
+        function handleModalChoice(theme) {
+            modal.style.display = 'none';
+
+            // OPEN PLANNER LINKS
+            if (currentAction === 'open') {
+                const docLinks = {
+                    color: 'https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit',
+                    black: 'https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit'
+                };
+                window.open(docLinks[theme], '_blank');
+            } 
+            // DOWNLOAD PDF FILES
+            else if (currentAction === 'pdf') {
+                const pdfLinks = {
+                    color: 'effective_planner_colour.pdf',
+                    black: 'ef_planner_black.pdf'
+                };
+                triggerDownload(pdfLinks[theme], `Effective-Planner-${theme}.pdf`);
+            } 
+            // DOWNLOAD DOCX FILES
+            else if (currentAction === 'docx') {
+                const docxLinks = {
+                    color: 'effective_planner_colour.docx',
+                    black: 'effective_planner_black.docx'
+                };
+                triggerDownload(docxLinks[theme], `Effective-Planner-${theme}.docx`);
             }
-            
-            function updateSlider() {
-                const activeGallery = currentGallery === 'color' ? colorGallery : blackGallery;
-                activeGallery.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                // Update dots
-                slideDots.forEach((dot, index) => {
-                    if (index === currentSlide) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
-                });
+        }
+
+        // FUNCTION TO TRIGGER DOWNLOAD
+        function triggerDownload(fileUrl, fileName) {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = fileUrl;
+            downloadLink.download = fileName;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+        }
+
+        // EVENT LISTENERS FOR MODAL BUTTONS
+        colorThemeBtn.addEventListener('click', function () {
+            handleModalChoice('color');
+        });
+
+        blackThemeBtn.addEventListener('click', function () {
+            handleModalChoice('black');
+        });
+
+        // CLOSE MODAL WHEN CLICKING OUTSIDE
+        window.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
             }
-            
-            // Add click events to dots
-            slideDots.forEach((dot) => {
-                dot.addEventListener('click', function() {
-                    const slideIndex = parseInt(this.getAttribute('data-index'));
-                    goToSlide(slideIndex);
-                });
+        });
+
+        // GALLERY TOGGLE FUNCTIONALITY
+        colorToggle.addEventListener('click', function () {
+            colorToggle.classList.add('active');
+            blackToggle.classList.remove('active');
+            colorGallery.style.display = 'flex';
+            blackGallery.style.display = 'none';
+        });
+
+        blackToggle.addEventListener('click', function () {
+            blackToggle.classList.add('active');
+            colorToggle.classList.remove('active');
+            blackGallery.style.display = 'flex';
+            colorGallery.style.display = 'none';
+        });
+
+        // SLIDER FUNCTIONALITY
+        let currentSlide = 0;
+
+        function updateSlider() {
+            const activeGallery = colorGallery.style.display === 'flex' ? colorGallery : blackGallery;
+            activeGallery.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            slideDots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
             });
-            
-            // Arrow navigation
-            prevArrow.addEventListener('click', function() {
-                currentSlide = (currentSlide > 0) ? currentSlide - 1 : 6;
+        }
+
+        prevArrow.addEventListener('click', function () {
+            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slideDots.length - 1;
+            updateSlider();
+        });
+
+        nextArrow.addEventListener('click', function () {
+            currentSlide = (currentSlide < slideDots.length - 1) ? currentSlide + 1 : 0;
+            updateSlider();
+        });
+
+        slideDots.forEach((dot, index) => {
+            dot.addEventListener('click', function () {
+                currentSlide = index;
                 updateSlider();
             });
-            
-            nextArrow.addEventListener('click', function() {
-                currentSlide = (currentSlide < 6) ? currentSlide + 1 : 0;
-                updateSlider();
-            });
-            
-            // Modal functionality
-const modal = document.getElementById('theme-modal');
-const colorThemeBtn = document.getElementById('color-theme-btn');
-const blackThemeBtn = document.getElementById('black-theme-btn');
-const openPlannerBtns = document.querySelectorAll('.open-planner-btn');
-const downloadPdfBtns = document.querySelectorAll('.download-btn[href*="pdf"]');
-const downloadXdocBtns = document.querySelectorAll('.download-btn[href*="xdoc"]');
-
-// Track which type of action triggered the modal
-let currentAction = '';
-
-// Set up the modal title based on action
-const modalTitle = document.querySelector('.modal-content h3');
-
-// Open planner buttons (Google Docs)
-openPlannerBtns.forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        currentAction = 'open';
-        modalTitle.textContent = 'Which version would you like to open?';
-        modal.style.display = 'flex';
+        });
     });
-});
-
-// PDF download buttons
-document.querySelectorAll('.download-btn').forEach(btn => {
-    if (btn.textContent.trim().toLowerCase() === 'pdf') {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            currentAction = 'pdf';
-            modalTitle.textContent = 'Which version would you like to download?';
-            modal.style.display = 'flex';
-        });
-    } else if (btn.textContent.trim().toLowerCase() === '.xdoc') {
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            currentAction = 'xdoc';
-            modalTitle.textContent = 'Which version would you like to download?';
-            modal.style.display = 'flex';
-        });
-    }
-});
-
-// Color button in modal
-colorThemeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    
-    if (currentAction === 'open') {
-        // Open color planner in Google Docs
-        window.open('https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit?usp=sharing&ouid=102040003747727625462&rtpof=true&sd=true', '_blank');
-    } 
-    else if (currentAction === 'pdf') {
-        // Download color PDF
-        const downloadLink = document.createElement('a');
-        downloadLink.href = 'effective_planner_colour.pdf';
-        downloadLink.download = 'Effective-Planner-Color.pdf';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
-    else if (currentAction === 'xdoc') {
-        // Download color XDOC
-        const downloadLink = document.createElement('a');
-        downloadLink.href = 'effective_planner_colour.docx';
-        downloadLink.download = 'Effective-Planner-Color.xdoc';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
-});
-
-// Black button in modal
-blackThemeBtn.addEventListener('click', function() {
-    modal.style.display = 'none';
-    
-    if (currentAction === 'open') {
-        // Open black planner in Google Docs
-        window.open('https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing', '_blank');
-    } 
-    else if (currentAction === 'pdf') {
-        // Download black PDF
-        const downloadLink = document.createElement('a');
-        downloadLink.href = 'ef_planner_black.pdf';
-        downloadLink.download = 'Effective-Planner-Black.pdf';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
-    else if (currentAction === 'xdoc') {
-        // Download black XDOC
-        const downloadLink = document.createElement('a');
-        downloadLink.href = 'effective_planner_black.docx';
-        downloadLink.download = 'Effective-Planner-Black.xdoc';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-    }
-});
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        });
-    </script>
+ </script>
 </body>
 </html>
