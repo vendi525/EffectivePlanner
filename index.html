@@ -625,75 +625,102 @@
             });
             
             // Modal functionality
-            openPlannerBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'flex';
-                });
-            });
-            
-            downloadBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    modal.style.display = 'flex';
-                });
-            });
-            
-            // Close modal when selecting a theme
-colorThemeBtn.addEventListener('click', function() {
-    // Get which button triggered the modal
-    const downloadType = localStorage.getItem('downloadType') || 'pdf';
-    
-    // Set the file path based on the download type and version
-    let filePath = '';
-    if (downloadType === 'pdf') {
-        filePath = 'effective_planner_colour.pdf';
-    } else if (downloadType === 'xdoc') {
-        filePath = 'effective_planner_colour.docx';
-    } else if (downloadType === 'open') {
-        // If it was the "Open planner" button
-        window.open('https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit?usp=sharing&ouid=102040003747727625462&rtpof=true&sd=true', '_blank');
-        modal.style.display = 'none';
-        return;
-    }
-    
-    // Create an anchor element to trigger the download
-    const downloadLink = document.createElement('a');
-    downloadLink.href = filePath;
-    downloadLink.download = 'Effective-Planner-Color.' + downloadType;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-    
-    modal.style.display = 'none';
+const modal = document.getElementById('theme-modal');
+const colorThemeBtn = document.getElementById('color-theme-btn');
+const blackThemeBtn = document.getElementById('black-theme-btn');
+const openPlannerBtns = document.querySelectorAll('.open-planner-btn');
+const downloadPdfBtns = document.querySelectorAll('.download-btn[href*="pdf"]');
+const downloadXdocBtns = document.querySelectorAll('.download-btn[href*="xdoc"]');
+
+// Track which type of action triggered the modal
+let currentAction = '';
+
+// Set up the modal title based on action
+const modalTitle = document.querySelector('.modal-content h3');
+
+// Open planner buttons (Google Docs)
+openPlannerBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        currentAction = 'open';
+        modalTitle.textContent = 'Which version would you like to open?';
+        modal.style.display = 'flex';
+    });
 });
 
-blackThemeBtn.addEventListener('click', function() {
-    // Get which button triggered the modal
-    const downloadType = localStorage.getItem('downloadType') || 'pdf';
-    
-    // Set the file path based on the download type and version
-    let filePath = '';
-    if (downloadType === 'pdf') {
-        filePath = 'ef_planner_black.pdf';
-    } else if (downloadType === 'xdoc') {
-        filePath = 'effective_planner_black.docx';
-    } else if (downloadType === 'open') {
-        // If it was the "Open planner" button
-        window.open('https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing', '_blank');
-        modal.style.display = 'none';
-        return;
+// PDF download buttons
+document.querySelectorAll('.download-btn').forEach(btn => {
+    if (btn.textContent.trim().toLowerCase() === 'pdf') {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentAction = 'pdf';
+            modalTitle.textContent = 'Which version would you like to download?';
+            modal.style.display = 'flex';
+        });
+    } else if (btn.textContent.trim().toLowerCase() === '.xdoc') {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentAction = 'xdoc';
+            modalTitle.textContent = 'Which version would you like to download?';
+            modal.style.display = 'flex';
+        });
     }
-    
-    // Create an anchor element to trigger the download
-    const downloadLink = document.createElement('a');
-    downloadLink.href = filePath;
-    downloadLink.download = 'Effective-Planner-Black.' + downloadType;
-    document.body.appendChild(downloadLink);
-    downloadLink.click();
-    document.body.removeChild(downloadLink);
-    
+});
+
+// Color button in modal
+colorThemeBtn.addEventListener('click', function() {
     modal.style.display = 'none';
+    
+    if (currentAction === 'open') {
+        // Open color planner in Google Docs
+        window.open('https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit?usp=sharing&ouid=102040003747727625462&rtpof=true&sd=true', '_blank');
+    } 
+    else if (currentAction === 'pdf') {
+        // Download color PDF
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'effective_planner_colour.pdf';
+        downloadLink.download = 'Effective-Planner-Color.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+    else if (currentAction === 'xdoc') {
+        // Download color XDOC
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'effective_planner_colour.docx';
+        downloadLink.download = 'Effective-Planner-Color.xdoc';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+});
+
+// Black button in modal
+blackThemeBtn.addEventListener('click', function() {
+    modal.style.display = 'none';
+    
+    if (currentAction === 'open') {
+        // Open black planner in Google Docs
+        window.open('https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing', '_blank');
+    } 
+    else if (currentAction === 'pdf') {
+        // Download black PDF
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'ef_planner_black.pdf';
+        downloadLink.download = 'Effective-Planner-Black.pdf';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+    else if (currentAction === 'xdoc') {
+        // Download black XDOC
+        const downloadLink = document.createElement('a');
+        downloadLink.href = 'effective_planner_black.docx';
+        downloadLink.download = 'Effective-Planner-Black.xdoc';
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
 });
             
             // Close modal when clicking outside
