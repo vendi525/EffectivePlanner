@@ -640,17 +640,61 @@
             });
             
             // Close modal when selecting a theme
-            colorThemeBtn.addEventListener('click', function() {
-                // Here you would add code to handle the color theme selection
-                modal.style.display = 'none';
-                alert('Color theme selected!'); // Replace with your actual functionality
-            });
-            
-            blackThemeBtn.addEventListener('click', function() {
-                // Here you would add code to handle the black theme selection
-                modal.style.display = 'none';
-                alert('Black theme selected!'); // Replace with your actual functionality
-            });
+colorThemeBtn.addEventListener('click', function() {
+    // Get which button triggered the modal
+    const downloadType = localStorage.getItem('downloadType') || 'pdf';
+    
+    // Set the file path based on the download type and version
+    let filePath = '';
+    if (downloadType === 'pdf') {
+        filePath = 'effective_planner_colour.pdf';
+    } else if (downloadType === 'xdoc') {
+        filePath = 'effective_planner_colour.docx';
+    } else if (downloadType === 'open') {
+        // If it was the "Open planner" button
+        window.open('https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit?usp=sharing&ouid=102040003747727625462&rtpof=true&sd=true', '_blank');
+        modal.style.display = 'none';
+        return;
+    }
+    
+    // Create an anchor element to trigger the download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = filePath;
+    downloadLink.download = 'Effective-Planner-Color.' + downloadType;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    
+    modal.style.display = 'none';
+});
+
+blackThemeBtn.addEventListener('click', function() {
+    // Get which button triggered the modal
+    const downloadType = localStorage.getItem('downloadType') || 'pdf';
+    
+    // Set the file path based on the download type and version
+    let filePath = '';
+    if (downloadType === 'pdf') {
+        filePath = 'ef_planner_black.pdf';
+    } else if (downloadType === 'xdoc') {
+        filePath = 'effective_planner_black.docx';
+    } else if (downloadType === 'open') {
+        // If it was the "Open planner" button
+        window.open('https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing', '_blank');
+        modal.style.display = 'none';
+        return;
+    }
+    
+    // Create an anchor element to trigger the download
+    const downloadLink = document.createElement('a');
+    downloadLink.href = filePath;
+    downloadLink.download = 'Effective-Planner-Black.' + downloadType;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    
+    modal.style.display = 'none';
+});
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
