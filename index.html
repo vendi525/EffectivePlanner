@@ -551,6 +551,23 @@
             // Gallery variables
             let currentSlide = 0;
             let currentGallery = 'color';
+        });
+        
+        openPlannerBtns.forEach(btn => {
+                 btn.addEventListener('click', function(e) {
+                     e.preventDefault();
+                     modal.style.display = 'flex';
+                 });
+             });
+             
+             downloadBtns.forEach(btn => {
+                 btn.addEventListener('click', function(e) {
+                     e.preventDefault();
+                     modal.style.display = 'flex';
+                 });
+             });
+             
+             // Close modal when selecting a theme
             const colorGallery = document.querySelector('.color-gallery');
             const blackGallery = document.querySelector('.black-gallery');
             const colorToggle = document.getElementById('color-toggle');
