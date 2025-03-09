@@ -170,13 +170,17 @@
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
+        .download-content {
+        text-align: left; /* Changed from center to left */
+        }
+        
         .download-buttons {
             margin-top: 1rem;
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            align-items: center;
+            align-items: flex-start;
         }
 
         /* Gallery Styles - ADJUSTED RATIO TO 9:16 */
@@ -189,7 +193,7 @@
         .gallery-toggle {
             display: flex;
             justify-content: center;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .toggle-btn {
@@ -377,12 +381,13 @@
             .download-container {
                 flex-direction: row;
                 justify-content: space-between;
-                align-items: center;
+                align-items: felx-start;
             }
 
             .download-content {
                 flex: 0 0 40%;
-                text-align: center;
+                text-align: left;
+                align-items: felx-start;
             }
 
             .gallery-container {
@@ -392,11 +397,11 @@
 
             .download-buttons {
                 flex-direction: row;
-                justify-content: center;
+                justify-content: flex-start;
             }
 
             .gallery-toggle {
-                justify-content: flex-end;
+                justify-content: center;
             }
         }
     </style>
@@ -461,73 +466,73 @@
         </div>
     </section>
 
-    <section class="download-section">
-        <div class="download">
-            <div class="download-container">
-                <div class="download-content">
-                    <h3>Open in Google docs</h3>
-                    <a href="#" class="btn open-planner-btn">Open planner</a>
-                    
-                    <h3 style="margin-top: 2rem;">Download</h3>
-                    <div class="download-buttons">
-                        <a href="#" class="btn download-btn">Pdf</a>
-                        <a href="#" class="btn download-btn">.xdoc</a>
-                    </div>
+   <section class="download-section">
+    <div class="download">
+        <div class="download-container">
+            <div class="download-content">
+                <h3>Open in Google docs</h3>
+                <a href="#" class="btn open-planner-btn">Open planner</a>
+                
+                <h3 style="margin-top: 2rem;">Download</h3>
+                <div class="download-buttons">
+                    <a href="#" class="btn download-btn">Pdf</a>
+                    <a href="#" class="btn download-btn">.xdoc</a>
+                </div>
+            </div>
+            
+            <div class="gallery-container">
+                <div class="gallery-toggle">
+                    <button class="toggle-btn active" id="color-toggle">Color Gallery</button>
+                    <button class="toggle-btn" id="black-toggle">Black Gallery</button>
                 </div>
                 
-                <div class="gallery-container">
-                    <div class="gallery-toggle">
-                        <button class="toggle-btn active" id="color-toggle">Color Gallery</button>
-                        <button class="toggle-btn" id="black-toggle">Black Gallery</button>
+                <div class="gallery-slider">
+                    <div class="gallery-slides color-gallery">
+                        <!-- These will be replaced with actual images -->
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 1" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 2" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 3" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 4" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 5" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 6" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 7" /></div>
                     </div>
-                    
-                    <div class="gallery-slider">
-                        <div class="gallery-slides color-gallery">
-                            <!-- These will be replaced with actual images -->
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 1" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 2" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 3" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 4" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 5" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 6" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 7" /></div>
+                    <div class="gallery-slides black-gallery" style="display: none;">
+                        <!-- These will be replaced with actual black images -->
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 1" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 2" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 3" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 4" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 5" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 6" /></div>
+                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 7" /></div>
+                    </div>
+                    <div class="gallery-arrows">
+                        <div class="arrow prev-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
                         </div>
-                        <div class="gallery-slides black-gallery" style="display: none;">
-                            <!-- These will be replaced with actual black images -->
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 1" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 2" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 3" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 4" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 5" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 6" /></div>
-                            <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 7" /></div>
-                        </div>
-                        <div class="gallery-arrows">
-                            <div class="arrow prev-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M15 18l-6-6 6-6"/>
-                                </svg>
-                            </div>
-                            <div class="arrow next-arrow">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M9 18l6-6-6-6"/>
-                                </svg>
-                            </div>
+                        <div class="arrow next-arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
                         </div>
                     </div>
-                    <div class="gallery-nav">
-                        <div class="slide-dot active" data-index="0"></div>
-                        <div class="slide-dot" data-index="1"></div>
-                        <div class="slide-dot" data-index="2"></div>
-                        <div class="slide-dot" data-index="3"></div>
-                        <div class="slide-dot" data-index="4"></div>
-                        <div class="slide-dot" data-index="5"></div>
-                        <div class="slide-dot" data-index="6"></div>
-                    </div>
+                </div>
+                <div class="gallery-nav">
+                    <div class="slide-dot active" data-index="0"></div>
+                    <div class="slide-dot" data-index="1"></div>
+                    <div class="slide-dot" data-index="2"></div>
+                    <div class="slide-dot" data-index="3"></div>
+                    <div class="slide-dot" data-index="4"></div>
+                    <div class="slide-dot" data-index="5"></div>
+                    <div class="slide-dot" data-index="6"></div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Theme Selection Modal -->
     <div class="modal" id="theme-modal">
