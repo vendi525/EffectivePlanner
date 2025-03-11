@@ -106,25 +106,52 @@
 
         /* Banner for free guide */
         .banner {
-            background-color: #ffe8d9;
-            color: #c21a1a;
-            text-align: center;
-            padding: 0.8rem;
-            font-weight: bold;
-            font-family: 'Comfortaa', sans-serif;
-            position: fixed;
-            top: 65px; /* Position below header */
-            left: 0;
-            right: 0;
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+        background-color: #ffe8d9;
+        color: #c21a1a;
+        text-align: center;
+        padding: 1.2rem; /* Increased padding for taller banner */
+        font-weight: bold;
+        font-family: 'Comfortaa', sans-serif;
+        position: fixed;
+        top: 65px; /* Position below header */
+        left: 0;
+        right: 0;
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+        .scroll-button {
+        width: 36px;
+        height: 36px;
+        background-color: #c21a1a;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .scroll-button:hover {
+        background-color: #a01515;
+        transform: translateY(-2px);
+    }
+    
+    .scroll-button svg {
+        width: 18px;
+        height: 18px;
+        color: white;
+    }
 
         /* Hero section - adjusted for banner */
         .hero {
             text-align: center;
             padding: 2rem 1rem;
-            padding-top: 8rem; /* Increased padding for fixed header and banner */
+            padding-top: 9rem; /* Increased padding for fixed header and banner */
             position: relative;
             min-height: 90vh; /* Taller to allow for center positioning */
             display: flex;
@@ -383,7 +410,11 @@
     </header>
 
     <div class="banner">
-        Free guide available! Download or open it in the resources section below
+    Free guide available! Download or open it in the resources section below
+    <div class="scroll-button" id="scrollToDownload">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 5v14M5 12l7 7 7-7"/>
+        </svg>
     </div>
 
     <section class="hero">
@@ -525,6 +556,9 @@
                 currentSlide = index;
                 updateSlider();
             });
+        document.getElementById('scrollToDownload').addEventListener('click', function() {
+            const downloadSection = document.querySelector('.download-section');
+            downloadSection.scrollIntoView({ behavior: 'smooth' });
         });
     });
  </script>
