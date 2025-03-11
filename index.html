@@ -59,6 +59,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             text-align: center;
+            margin-right: 10px;
         }
 
         .btn:hover {
@@ -172,7 +173,7 @@
         }
         
         .download-content {
-        text-align: left; /* Changed from center to left */
+            text-align: left; /* Changed from center to left */
         }
         
         .download-buttons {
@@ -188,37 +189,6 @@
             margin-top: 2rem;
             width: 100%;
             position: relative;
-        }
-
-        .gallery-toggle {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .toggle-btn {
-            background-color: #f0f0f0;
-            color: #333;
-            padding: 8px 16px;
-            border: none;
-            cursor: pointer;
-            font-family: 'Comfortaa', sans-serif;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-btn.active {
-            background-color: #c21a1a;
-            color: white;
-        }
-
-        .toggle-btn:first-child {
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-        }
-
-        .toggle-btn:last-child {
-            border-top-right-radius: 20px;
-            border-bottom-right-radius: 20px;
         }
 
         .gallery-slider {
@@ -294,37 +264,6 @@
             pointer-events: auto;
         }
 
-        /* Theme Selection Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 20px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .modal-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
         /* Responsive styles for desktop */
         @media (min-width: 768px) {
             header {
@@ -381,13 +320,13 @@
             .download-container {
                 flex-direction: row;
                 justify-content: space-between;
-                align-items: felx-start;
+                align-items: flex-start;
             }
 
             .download-content {
                 flex: 0 0 40%;
                 text-align: left;
-                align-items: felx-start;
+                align-items: flex-start;
             }
 
             .gallery-container {
@@ -399,10 +338,6 @@
                 flex-direction: row;
                 justify-content: flex-start;
             }
-
-            .gallery-toggle {
-                justify-content: center;
-            }
         }
     </style>
 </head>
@@ -411,14 +346,14 @@
         <div class="logo">
             <h1>The effective planner</h1>
         </div>
-        <a href="#" class="btn open-planner-btn">Open planner</a>
+        <a href="https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit" target="_blank" class="btn open-planner-btn">Open planner</a>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h2>Make time for what matters.</h2>
             <p>Organize your life, set priorities, generate success, reach your goals.</p>
-            <a href="#" class="btn open-planner-btn">Open planner</a>
+            <a href="https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit" target="_blank" class="btn open-planner-btn">Open planner</a>
         </div>
     </section>
 
@@ -471,23 +406,18 @@
         <div class="download-container">
             <div class="download-content">
                 <h3>Open in Google docs</h3>
-                <a href="#" class="btn open-planner-btn">Open planner</a>
+                <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn">Open planner</a>
+                <a href="effective_planner_colour.pdf" target="_blank" class="btn">Open guide</a>
                 
                 <h3 style="margin-top: 2rem;">Download</h3>
                 <div class="download-buttons">
-                    <a href="#" class="btn download-btn">Pdf</a>
-                    <a href="#" class="btn download-btn">.xdoc</a>
+                    <a href="effective_planner_colour.pdf" target="_blank" class="btn">PDF</a>
                 </div>
             </div>
             
             <div class="gallery-container">
-                <div class="gallery-toggle">
-                    <button class="toggle-btn active" id="color-toggle">Color Gallery</button>
-                    <button class="toggle-btn" id="black-toggle">Black Gallery</button>
-                </div>
-                
                 <div class="gallery-slider">
-                    <div class="gallery-slides color-gallery">
+                    <div class="gallery-slides">
                         <!-- These will be replaced with actual images -->
                         <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 1" /></div>
                         <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 2" /></div>
@@ -496,16 +426,6 @@
                         <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 5" /></div>
                         <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 6" /></div>
                         <div class="slide"><img src="/api/placeholder/400/711" alt="Planner preview 7" /></div>
-                    </div>
-                    <div class="gallery-slides black-gallery" style="display: none;">
-                        <!-- These will be replaced with actual black images -->
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 1" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 2" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 3" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 4" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 5" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 6" /></div>
-                        <div class="slide"><img src="/api/placeholder/400/711" alt="Black planner preview 7" /></div>
                     </div>
                     <div class="gallery-arrows">
                         <div class="arrow prev-arrow">
@@ -534,149 +454,19 @@
     </div>
 </section>
 
-    <!-- Theme Selection Modal -->
-    <div class="modal" id="theme-modal">
-        <div class="modal-content">
-            <h3>Which theme would you like to open?</h3>
-            <div class="modal-buttons">
-                <button class="btn" id="color-theme-btn">Color</button>
-                <button class="btn" id="black-theme-btn">Black</button>
-            </div>
-        </div>
-    </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // MODAL VARIABLES
-        const modal = document.getElementById('theme-modal');
-        const modalTitle = document.querySelector('.modal-content h3');
-        const colorThemeBtn = document.getElementById('color-theme-btn');
-        const blackThemeBtn = document.getElementById('black-theme-btn');
-        
-        // BUTTONS
-        const openPlannerBtns = document.querySelectorAll('.open-planner-btn');
-        const pdfDownloadBtns = document.querySelectorAll('.download-btn.pdf');
-        const docxDownloadBtns = document.querySelectorAll('.download-btn.docx');
-        
-        // GALLERY TOGGLE
-        const colorToggle = document.getElementById('color-toggle');
-        const blackToggle = document.getElementById('black-toggle');
-        
         // GALLERY VARIABLES
-        const colorGallery = document.querySelector('.color-gallery');
-        const blackGallery = document.querySelector('.black-gallery');
         const slideDots = document.querySelectorAll('.slide-dot');
         const prevArrow = document.querySelector('.prev-arrow');
         const nextArrow = document.querySelector('.next-arrow');
-
-        let currentAction = ''; // Tracks whether we're opening, downloading PDF, or downloading DOCX
-
-        // FUNCTION TO OPEN MODAL
-        function openModal(actionType, titleText) {
-            currentAction = actionType;
-            modalTitle.textContent = titleText;
-            modal.style.display = 'flex';
-        }
-
-        // EVENT LISTENERS FOR OPENING MODAL
-        openPlannerBtns.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                openModal('open', 'Which version would you like to open?');
-            });
-        });
-
-        pdfDownloadBtns.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                openModal('pdf', 'Which version would you like to download?');
-            });
-        });
-
-        docxDownloadBtns.forEach(btn => {
-            btn.addEventListener('click', function (e) {
-                e.preventDefault();
-                openModal('docx', 'Which version would you like to download?');
-            });
-        });
-
-        // FUNCTION TO HANDLE MODAL CHOICES
-        function handleModalChoice(theme) {
-            modal.style.display = 'none';
-
-            // OPEN PLANNER LINKS
-            if (currentAction === 'open') {
-                const docLinks = {
-                    color: 'https://docs.google.com/document/d/1GyfBHIX1QlZm5NkF3mXEz4qztUwhmWhj/edit',
-                    black: 'https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit'
-                };
-                window.open(docLinks[theme], '_blank');
-            } 
-            // DOWNLOAD PDF FILES
-            else if (currentAction === 'pdf') {
-                const pdfLinks = {
-                    color: 'effective_planner_colour.pdf',
-                    black: 'ef_planner_black.pdf'
-                };
-                triggerDownload(pdfLinks[theme], `Effective-Planner-${theme}.pdf`);
-            } 
-            // DOWNLOAD DOCX FILES
-            else if (currentAction === 'docx') {
-                const docxLinks = {
-                    color: 'effective_planner_colour.docx',
-                    black: 'effective_planner_black.docx'
-                };
-                triggerDownload(docxLinks[theme], `Effective-Planner-${theme}.docx`);
-            }
-        }
-
-        // FUNCTION TO TRIGGER DOWNLOAD
-        function triggerDownload(fileUrl, fileName) {
-            const downloadLink = document.createElement('a');
-            downloadLink.href = fileUrl;
-            downloadLink.download = fileName;
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-        }
-
-        // EVENT LISTENERS FOR MODAL BUTTONS
-        colorThemeBtn.addEventListener('click', function () {
-            handleModalChoice('color');
-        });
-
-        blackThemeBtn.addEventListener('click', function () {
-            handleModalChoice('black');
-        });
-
-        // CLOSE MODAL WHEN CLICKING OUTSIDE
-        window.addEventListener('click', function (e) {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-
-        // GALLERY TOGGLE FUNCTIONALITY
-        colorToggle.addEventListener('click', function () {
-            colorToggle.classList.add('active');
-            blackToggle.classList.remove('active');
-            colorGallery.style.display = 'flex';
-            blackGallery.style.display = 'none';
-        });
-
-        blackToggle.addEventListener('click', function () {
-            blackToggle.classList.add('active');
-            colorToggle.classList.remove('active');
-            blackGallery.style.display = 'flex';
-            colorGallery.style.display = 'none';
-        });
+        const gallerySlides = document.querySelector('.gallery-slides');
 
         // SLIDER FUNCTIONALITY
         let currentSlide = 0;
 
         function updateSlider() {
-            const activeGallery = colorGallery.style.display === 'flex' ? colorGallery : blackGallery;
-            activeGallery.style.transform = `translateX(-${currentSlide * 100}%)`;
+            gallerySlides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
             slideDots.forEach((dot, index) => {
                 dot.classList.toggle('active', index === currentSlide);
