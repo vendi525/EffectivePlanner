@@ -416,6 +416,7 @@
             <path d="M12 5v14M5 12l7 7 7-7"/>
         </svg>
     </div>
+</div>
 
     <section class="hero">
         <div class="hero-content">
@@ -556,6 +557,8 @@
                 currentSlide = index;
                 updateSlider();
             });
+        });
+        
         document.getElementById('scrollToDownload').addEventListener('click', function() {
             const downloadSection = document.querySelector('.download-section');
             downloadSection.scrollIntoView({ behavior: 'smooth' });
