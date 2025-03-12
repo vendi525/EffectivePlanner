@@ -278,6 +278,69 @@
             pointer-events: auto;
         }
 
+        /* External links section */
+        .external-links {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .external-links a {
+            color: #c21a1a;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Exo', sans-serif;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .external-links a:hover {
+            color: #a01515;
+            text-decoration: underline;
+        }
+
+        .external-links a svg {
+            margin-right: 8px;
+        }
+
+        /* Cookie notice */
+        .cookie-notice {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cookie-notice p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .cookie-notice-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Hide the cookie notice by default */
+        .cookie-notice {
+            display: none;
+        }
+
+        /* Mobile-specific styles */
+        .mobile-external-links {
+            margin-top: 2rem;
+            display: none; /* Hidden by default, will show on mobile */
+        }
+
         /* Responsive styles for desktop */
         @media (min-width: 768px) {
             header {
@@ -356,24 +419,49 @@
                 flex-direction: row;
                 justify-content: flex-start;
             }
+
+            .mobile-external-links {
+                display: none; /* Always hidden on desktop */
+            }
+        }
+
+        /* Mobile-specific styles */
+        @media (max-width: 767px) {
+            .external-links {
+                display: none; /* Hide desktop external links on mobile */
+            }
+
+            .mobile-external-links {
+                display: flex; /* Show mobile external links */
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem 2rem;
+            }
         }
     </style>
 </head>
+     <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKZ6CNE41H"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GKZ6CNE41H');
+</script>
 <body>
     <header>
         <div class="logo">
             <h1>The Effective Planner + Free Guide</h1>
             <div class="subtitle">Inspired by Stephen Covey</div>
         </div>
-     </header>
-
+    </header>
 
     <section class="hero">
         <div class="hero-content">
             <h2>Make time for what matters.</h2>
             <p>Organize your life, set priorities, generate success, reach your goals.</p>
-            <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn">Open planner</a>
-            <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn">Free Guide</a>
+            <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="hero-open-planner">Open planner</a>
+            <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="hero-free-guide">Free Guide</a>
         </div>
     </section>
 
@@ -385,7 +473,7 @@
             <div class="features-container">
                 <div class="feature">
                     <div class="feature-icon">
-                        <img <img src="logo3.svg" alt="Logo" width="80" height="80" />
+                        <img src="logo3.svg" alt="Logo" width="80" height="80" />
                     </div>
                     <h3>Stephen Covey</h3>
                     <p>Author, educator and businessman. In 1996, Time magazine named him one of the 25 most influential people.</p>
@@ -393,7 +481,7 @@
                 
                 <div class="feature">
                     <div class="feature-icon">
-                        <img <img src="logo2.svg" alt="Logo" width="80" height="80" />
+                        <img src="logo2.svg" alt="Logo" width="80" height="80" />
                     </div>
                     <h3>The 7 Habbits</h3>
                     <p>Be proactive, begin with the end in mind, put first things first, think win/win, seek first to understand, then to be understood, synergize and sharpen the saw.</p>
@@ -401,96 +489,245 @@
                 
                 <div class="feature">
                     <div class="feature-icon">
-                        <img <img src="logo1.svg" alt="Logo" width="80" height="80" />
+                        <img src="logo1.svg" alt="Logo" width="80" height="80" />
                     </div>
-                    <h3>The Effective Planner</h3>
+                    <h3>Digital Planner</h3>
                     <p>Provides a simple and intuitive approach for applying Covey's productivity startegy. Time managment and goal setting have never been easier.</p>
                 </div>
             </div>
         </div>
     </section>
 
-   <section class="download-section">
-    <div class="download">
-        <div class="download-container">
-            <div class="download-content">
-                <h3>Open in Google docs</h3>
-                <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn">Open planner</a>
+    <section class="download-section">
+        <div class="download">
+            <div class="download-container">
+                <div class="download-content">
+                    <h3>Open in Google docs</h3>
+                    <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="download-open-planner">Open planner</a>
+                    
+                    <h3 style="margin-top: 2rem;">Download</h3>
+                    <div class="download-buttons">
+                        <a href="effective_planner_black (1).pdf" target="_blank" class="btn" data-metric="download-pdf">PDF</a>
+                        <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="download-free-guide">Free Guide</a>
+                    </div>
+
+                    <!-- External links for desktop -->
+                    <div class="external-links">
+                        <h3 style="margin-top: 2rem;">External Links</h3>
+                        <a href="https://www.franklincovey.com/" target="_blank" data-metric="external-franklin-covey">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                            FranklinCovey Official Site
+                        </a>
+                        <a href="https://www.amazon.com/7-Habits-Highly-Effective-People/dp/1416502491" target="_blank" data-metric="external-amazon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                            Stephen Covey Resources
+                        </a>
+                    </div>
+                </div>
                 
-                <h3 style="margin-top: 2rem;">Download</h3>
-                <div class="download-buttons">
-                    <a href="effective_planner_black (1).pdf" target="_blank" class="btn">PDF</a>
-                    <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn">Free Guide</a>
-                </div>
-            </div>
-            
-            <div class="gallery-container">
-                <div class="gallery-slider">
-                    <div class="gallery-slides">
-                        <!-- These will be replaced with actual images -->
-                        <div class="slide"><img src="1.svg" alt="Planner preview 1" /></div>
-                        <div class="slide"><img src="2.svg" alt="Planner preview 2" /></div>
-                        <div class="slide"><img src="preview3.svg" alt="Planner preview 3" /></div>
-                    </div>
-                    <div class="gallery-arrows">
-                        <div class="arrow prev-arrow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M15 18l-6-6 6-6"/>
-                            </svg>
+                <div class="gallery-container">
+                    <div class="gallery-slider">
+                        <div class="gallery-slides">
+                            <!-- These will be replaced with actual images -->
+                            <div class="slide"><img src="1.svg" alt="Planner preview 1" /></div>
+                            <div class="slide"><img src="2.svg" alt="Planner preview 2" /></div>
+                            <div class="slide"><img src="preview3.svg" alt="Planner preview 3" /></div>
                         </div>
-                        <div class="arrow next-arrow">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 18l6-6-6-6"/>
-                            </svg>
+                        <div class="gallery-arrows">
+                            <div class="arrow prev-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 18l-6-6 6-6"/>
+                                </svg>
+                            </div>
+                            <div class="arrow next-arrow">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M9 18l6-6-6-6"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="gallery-nav">
-                    <div class="slide-dot active" data-index="0"></div>
-                    <div class="slide-dot" data-index="1"></div>
-                    <div class="slide-dot" data-index="2"></div>
+                    <div class="gallery-nav">
+                        <div class="slide-dot active" data-index="0"></div>
+                        <div class="slide-dot" data-index="1"></div>
+                        <div class="slide-dot" data-index="2"></div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- External links for mobile - displayed below gallery -->
+        <div class="mobile-external-links">
+            <h3>Resources</h3>
+            <a href="https://www.franklincovey.com/" target="_blank" data-metric="mobile-external-franklin-covey">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                    <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                </svg>
+                FranklinCovey Official Site
+            </a>
+            <a href="https://www.stephencovey.com/" target="_blank" data-metric="mobile-external-stephen-covey">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                    <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                </svg>
+                Stephen Covey Resources
+            </a>
+        </div>
+    </section>
+
+    <!-- Cookie Notice -->
+    <div class="cookie-notice" id="cookieNotice">
+        <p>This website uses cookies to track your usage and improve your experience. By continuing to use this site, you consent to our use of cookies.</p>
+        <div class="cookie-notice-buttons">
+            <button class="btn btn-sm" id="acceptCookies">Accept</button>
+            <button class="btn btn-sm" id="rejectCookies">Reject</button>
+        </div>
     </div>
-</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // GALLERY VARIABLES
-        const slideDots = document.querySelectorAll('.slide-dot');
-        const prevArrow = document.querySelector('.prev-arrow');
-        const nextArrow = document.querySelector('.next-arrow');
-        const gallerySlides = document.querySelector('.gallery-slides');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // GALLERY VARIABLES
+            const slideDots = document.querySelectorAll('.slide-dot');
+            const prevArrow = document.querySelector('.prev-arrow');
+            const nextArrow = document.querySelector('.next-arrow');
+            const gallerySlides = document.querySelector('.gallery-slides');
 
-        // SLIDER FUNCTIONALITY
-        let currentSlide = 0;
+            // SLIDER FUNCTIONALITY
+            let currentSlide = 0;
 
-        function updateSlider() {
-            gallerySlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            function updateSlider() {
+                gallerySlides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-            slideDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
+                slideDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            }
 
-        prevArrow.addEventListener('click', function () {
-            currentSlide = (currentSlide > 0) ? currentSlide - 1 : slideDots.length - 1;
-            updateSlider();
-        });
-
-        nextArrow.addEventListener('click', function () {
-            currentSlide = (currentSlide < slideDots.length - 1) ? currentSlide + 1 : 0;
-            updateSlider();
-        });
-
-        slideDots.forEach((dot, index) => {
-            dot.addEventListener('click', function () {
-                currentSlide = index;
+            prevArrow.addEventListener('click', function () {
+                currentSlide = (currentSlide > 0) ? currentSlide - 1 : slideDots.length - 1;
                 updateSlider();
             });
+
+            nextArrow.addEventListener('click', function () {
+                currentSlide = (currentSlide < slideDots.length - 1) ? currentSlide + 1 : 0;
+                updateSlider();
+            });
+
+            slideDots.forEach((dot, index) => {
+                dot.addEventListener('click', function () {
+                    currentSlide = index;
+                    updateSlider();
+                });
+            });
+
+            // METRICS TRACKING
+            // Initialize analytics
+            function initMetrics() {
+                // Check if cookies are accepted
+                if (localStorage.getItem('cookiesAccepted') === 'true') {
+                    // Track all button clicks
+                    const trackableElements = document.querySelectorAll('[data-metric]');
+                    trackableElements.forEach(element => {
+                        element.addEventListener('click', function() {
+                            const metricName = this.getAttribute('data-metric');
+                            trackEvent('button_click', { 
+                                name: metricName,
+                                url: this.getAttribute('href')
+                            });
+                        });
+                    });
+
+                    // Track time on page
+                    const startTime = new Date();
+                    window.addEventListener('beforeunload', function() {
+                        const endTime = new Date();
+                        const timeSpent = (endTime - startTime) / 1000; // in seconds
+                        trackEvent('time_on_page', { 
+                            seconds: timeSpent,
+                            page: window.location.pathname
+                        });
+                    });
+
+                    // Start session tracking
+                    trackEvent('page_view', {
+                        page: window.location.pathname,
+                        referrer: document.referrer
+                    });
+                }
+            }
+
+            // Send tracking data to your analytics service
+            function trackEvent(eventName, eventData) {
+                // This is where you would send data to your analytics service
+                // For example, with Google Analytics:
+                if (typeof gtag === 'function') {
+                    gtag('event', eventName, eventData);
+                }
+                
+                // Or with a custom endpoint:
+                /*
+                fetch('https://your-analytics-endpoint.com/track', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        event: eventName,
+                        data: eventData,
+                        timestamp: new Date().toISOString(),
+                        sessionId: getSessionId()
+                    }),
+                });
+                */
+                
+                // For development, log to console
+                console.log('TRACKING:', eventName, eventData);
+            }
+
+            // Generate or retrieve session ID
+            function getSessionId() {
+                let sessionId = sessionStorage.getItem('session_id');
+                if (!sessionId) {
+                    sessionId = 'session_' + Math.random().toString(36).substring(2, 15);
+                    sessionStorage.setItem('session_id', sessionId);
+                }
+                return sessionId;
+            }
+
+            // COOKIE NOTICE HANDLING
+            const cookieNotice = document.getElementById('cookieNotice');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const rejectBtn = document.getElementById('rejectCookies');
+
+            // Check if cookie preference is already set
+            if (localStorage.getItem('cookiesAccepted') === null) {
+                // Show the cookie notice
+                cookieNotice.style.display = 'flex';
+            } else {
+                // Initialize metrics if cookies were accepted
+                initMetrics();
+            }
+
+            // Handle accept button click
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieNotice.style.display = 'none';
+                initMetrics();
+            });
+
+            // Handle reject button click
+            rejectBtn.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieNotice.style.display = 'none';
+            });
         });
-    });
- </script>
+    </script>
+    
 </body>
 </html>
