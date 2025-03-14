@@ -441,14 +441,13 @@
     </style>
 </head>
      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GKZ6CNE41H"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-GKZ6CNE41H');
-</script>
+
 <body>
+    <div id="cookieNotice" style="display: none; position: fixed; bottom: 0; width: 100%; background: #333; color: white; padding: 10px;">
+        <p>Uporabljamo piškotke za izboljšanje uporabniške izkušnje. Z uporabo naše spletne strani soglašate z uporabo piškotkov. <a href="#">Več informacij</a></p>
+        <button id="acceptCookies">Sprejmi piškotke</button>
+        <button id="rejectCookies">Zavrnite piškotke</button>
+    </div>
     <header>
         <div class="logo">
             <h1>The Effective Planner + Free Guide</h1>
@@ -460,8 +459,8 @@
         <div class="hero-content">
             <h2>Make time for what matters.</h2>
             <p>Organize your life, set priorities, generate success, reach your goals.</p>
-            <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="hero-open-planner" onclick="trackEvent('Download', 'Click', 'Open Planner');">Open planner</a>
-            <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="hero-free-guide" onclick="trackEvent('Download', 'Click', 'Open Planner');">Free Guide</a>
+            <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="hero_open_planner_docs">Open planner</a>
+            <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="hero_free_guide">Free Guide</a>
         </div>
     </section>
 
@@ -504,23 +503,23 @@
                 <div class="download-content">
                     <h3>Open Planner in:</h3>
                     <div class="download-buttons">
-                      <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="download-open-planner" onclick="trackEvent('Download', 'Click', 'Open Planner');">Google docs</a>
-                      <a href="effective_planner_black (1).pdf" target="_blank" class="btn" data-metric="download-pdf" onclick="trackEvent('Download', 'Click', 'Open Planner');">PDF</a>
+                      <a href="https://docs.google.com/document/d/1CJStxHsFIfsqasS_jR1TxbtA2wl5ZzuI6kV5dhFrSis/edit?usp=sharing" target="_blank" class="btn open-planner-btn" data-metric="bottom_open_planner_docs">Google docs</a>
+                      <a href="effective_planner_black (1).pdf" target="_blank" class="btn" data-metric="bottom_open_planner_pdf">PDF</a>
                     </div>
                     <h3 style="margin-top: 2rem;">Get your Guide:</h3>
-                      <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="download-free-guide" onclick="trackEvent('Download', 'Click', 'Open Planner');">Free Guide</a>
+                      <a href="ef_guide.pdf" target="_blank" class="btn open-planner-btn" data-metric="bottom_free_guide">Free Guide</a>
                   
                     <!-- External links for desktop -->
                     <div class="external-links">
                         <h3 style="margin-top: 2rem;">External Links</h3>
-                        <a href="https://www.franklincovey.com/" target="_blank" data-metric="external-franklin-covey" onclick="trackEvent('Download', 'Click', 'Open Planner');">
+                        <a href="https://www.franklincovey.com/" target="_blank" data-metric="external_franklin_covey">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                                 <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
                             </svg>
                             FranklinCovey Official Site
                         </a>
-                        <a href="https://www.amazon.com/7-Habits-Highly-Effective-People/dp/1416502491" target="_blank" data-metric="external-amazon" onclick="trackEvent('Download', 'Click', 'Open Planner');">
+                        <a href="https://www.amazon.com/7-Habits-Highly-Effective-People/dp/1416502491" target="_blank" data-metric="external_amazon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                                 <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
@@ -563,14 +562,14 @@
         <!-- External links for mobile - displayed below gallery -->
         <div class="mobile-external-links">
             <h3>External Links</h3>
-            <a href="https://www.franklincovey.com/" target="_blank" data-metric="mobile-external-franklin-covey">
+            <a href="https://www.franklincovey.com/" target="_blank" data-metric="external_franklin_covey">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                     <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
                 </svg>
                 FranklinCovey Official Site
             </a>
-            <a href="https://www.amazon.com/7-Habits-Highly-Effective-People/dp/1416502491" target="_blank" data-metric="mobile-external-amazon">
+            <a href="https://www.amazon.com/7-Habits-Highly-Effective-People/dp/1416502491" target="_blank" data-metric="external_amazon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
                     <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
@@ -627,112 +626,89 @@
 
             // METRICS TRACKING
             // Initialize analytics
-            function initMetrics() {
-                // Check if cookies are accepted
-                if (localStorage.getItem('cookiesAccepted') === 'true') {
-                    // Track all button clicks
-                    const trackableElements = document.querySelectorAll('[data-metric]');
-                    trackableElements.forEach(element => {
-                        element.addEventListener('click', function() {
-                            const metricName = this.getAttribute('data-metric');
-                            trackEvent('button_click', { 
-                                name: metricName,
-                                url: this.getAttribute('href')
-                            });
-                        });
-                    });
+           
+<script>
+    // Function to load Google Analytics script dynamically
+    function loadAnalytics() {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-GKZ6CNE41H";
+        document.head.appendChild(script);
 
-                    // Track time on page
-                    const startTime = new Date();
-                    window.addEventListener('beforeunload', function() {
-                        const endTime = new Date();
-                        const timeSpent = (endTime - startTime) / 1000; // in seconds
-                        trackEvent('time_on_page', { 
-                            seconds: timeSpent,
-                            page: window.location.pathname
-                        });
-                    });
+        script.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GKZ6CNE41H');
+        };
+    }
 
-                    // Start session tracking
-                    trackEvent('page_view', {
-                        page: window.location.pathname,
-                        referrer: document.referrer
-                    });
-                }
-            }
+    // Initialize metrics after cookie consent
+    function initMetrics() {
+        // Load Google Analytics if cookies are accepted
+        loadAnalytics();
 
-            // Send tracking data to your analytics service
-            function trackEvent(eventName, eventData) {
-                // This is where you would send data to your analytics service
-                // For example, with Google Analytics:
-                if (typeof gtag === 'function') {
-                    gtag('event', eventName, eventData);
-                }
-                
-                // Or with a custom endpoint:
-                /*
-                fetch('https://your-analytics-endpoint.com/track', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        event: eventName,
-                        data: eventData,
-                        timestamp: new Date().toISOString(),
-                        sessionId: getSessionId()
-                    }),
+        // Track all button clicks with 'data-metric' attribute
+        const trackableElements = document.querySelectorAll('[data-metric]');
+        trackableElements.forEach(element => {
+            element.addEventListener('click', function() {
+                const metricName = this.getAttribute('data-metric');
+                trackEvent(metricName, {
+                    url: this.getAttribute('href')
                 });
-                */
-                
-                // For development, log to console
-                console.log('TRACKING:', eventName, eventData);
-            }
-
-            // Generate or retrieve session ID
-            function getSessionId() {
-                let sessionId = sessionStorage.getItem('session_id');
-                if (!sessionId) {
-                    sessionId = 'session_' + Math.random().toString(36).substring(2, 15);
-                    sessionStorage.setItem('session_id', sessionId);
-                }
-                return sessionId;
-            }
-
-            // COOKIE NOTICE HANDLING
-            const cookieNotice = document.getElementById('cookieNotice');
-            const acceptBtn = document.getElementById('acceptCookies');
-            const rejectBtn = document.getElementById('rejectCookies');
-
-            // Check if cookie preference is already set
-            if (localStorage.getItem('cookiesAccepted') === null) {
-                // Show the cookie notice
-                cookieNotice.style.display = 'flex';
-            } else {
-                // Initialize metrics if cookies were accepted
-                initMetrics();
-            }
-
-            // Handle accept button click
-            acceptBtn.addEventListener('click', function() {
-                localStorage.setItem('cookiesAccepted', 'true');
-                cookieNotice.style.display = 'none';
-                initMetrics();
-            });
-
-            // Handle reject button click
-            rejectBtn.addEventListener('click', function() {
-                localStorage.setItem('cookiesAccepted', 'false');
-                cookieNotice.style.display = 'none';
             });
         });
-    </script>
-    <script>
-  function trackEvent(category, action, label) {
-    if (typeof ga === 'function') {
-      ga('send', 'event', category, action, label);
+
+        // Track time on page
+        const startTime = new Date();
+        window.addEventListener('beforeunload', function() {
+            const endTime = new Date();
+            const timeSpent = (endTime - startTime) / 1000; // in seconds
+            trackEvent('time_on_page', { 
+                seconds: timeSpent,
+                page: window.location.pathname
+            });
+        });
     }
-  }
+
+    // Send tracking data to Google Analytics
+    function trackEvent(eventName, eventData) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, eventData);
+        }
+        console.log('TRACKING:', eventName, eventData);
+    }
+
+    // COOKIE NOTICE HANDLING
+    document.addEventListener('DOMContentLoaded', function() {
+        const cookieNotice = document.getElementById('cookieNotice');
+        const acceptBtn = document.getElementById('acceptCookies');
+        const rejectBtn = document.getElementById('rejectCookies');
+
+        // Check if cookie preference is already set
+        if (localStorage.getItem('cookiesAccepted') === null) {
+            // Show the cookie notice
+            cookieNotice.style.display = 'flex';
+        } else {
+            // Initialize metrics if cookies were accepted
+            if (localStorage.getItem('cookiesAccepted') === 'true') {
+                initMetrics();
+            }
+        }
+
+        // Handle accept button click
+        acceptBtn.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieNotice.style.display = 'none';
+            initMetrics();
+        });
+
+        // Handle reject button click
+        rejectBtn.addEventListener('click', function() {
+            localStorage.setItem('cookiesAccepted', 'false');
+            cookieNotice.style.display = 'none';
+        });
+    });
 </script>
     
 </body>
