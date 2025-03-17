@@ -597,44 +597,42 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // GALLERY VARIABLES
-            const slideDots = document.querySelectorAll('.slide-dot');
-            const prevArrow = document.querySelector('.prev-arrow');
-            const nextArrow = document.querySelector('.next-arrow');
-            const gallerySlides = document.querySelector('.gallery-slides');
+       document.addEventListener('DOMContentLoaded', function () {
+    // GALLERY VARIABLES
+    const slideDots = document.querySelectorAll('.slide-dot');
+    const prevArrow = document.querySelector('.prev-arrow');
+    const nextArrow = document.querySelector('.next-arrow');
+    const gallerySlides = document.querySelector('.gallery-slides');
 
-            // SLIDER FUNCTIONALITY
-            let currentSlide = 0;
+    // SLIDER FUNCTIONALITY
+    let currentSlide = 0;
 
-            function updateSlider() {
-                gallerySlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+    function updateSlider() {
+        gallerySlides.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-                slideDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
+        slideDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
 
-            prevArrow.addEventListener('click', function () {
-                currentSlide = (currentSlide > 0) ? currentSlide - 1 : slideDots.length - 1;
-                updateSlider();
-            });
-
-            nextArrow.addEventListener('click', function () {
-                currentSlide = (currentSlide < slideDots.length - 1) ? currentSlide + 1 : 0;
-                updateSlider();
-            });
-
-            slideDots.forEach((dot, index) => {
-                dot.addEventListener('click', function () {
-                    currentSlide = index;
-                    updateSlider();
-                });
-            });
+    prevArrow.addEventListener('click', function () {
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slideDots.length - 1;
+        updateSlider();
     });
-            // METRICS TRACKING
-            // Initialize analytics
-    // Function to load Google Analytics script dynamically
+
+    nextArrow.addEventListener('click', function () {
+        currentSlide = (currentSlide < slideDots.length - 1) ? currentSlide + 1 : 0;
+        updateSlider();
+    });
+
+    slideDots.forEach((dot, index) => {
+        dot.addEventListener('click', function () {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+
+    // METRICS TRACKING
     function loadAnalytics() {
         const script = document.createElement('script');
         script.async = true;
@@ -649,35 +647,6 @@
         };
     }
 
-    // Initialize metrics after cookie consent
-    function initMetrics() {
-        // Load Google Analytics if cookies are accepted
-        loadAnalytics();
-
-        // Track all button clicks with 'data-metric' attribute
-        const trackableElements = document.querySelectorAll('[data-metric]');
-        trackableElements.forEach(element => {
-            element.addEventListener('click', function() {
-                const metricName = this.getAttribute('data-metric');
-                trackEvent(metricName, {
-                    url: this.getAttribute('href')
-                });
-            });
-        });
-
-        // Track time on page
-        const startTime = new Date();
-        window.addEventListener('beforeunload', function() {
-            const endTime = new Date();
-            const timeSpent = (endTime - startTime) / 1000; // in seconds
-            trackEvent('time_on_page', { 
-                seconds: timeSpent,
-                page: window.location.pathname
-            });
-        });
-    }
-
-    // Send tracking data to Google Analytics
     function trackEvent(eventName, eventData) {
         if (typeof gtag === 'function') {
             gtag('event', eventName, eventData);
@@ -685,36 +654,60 @@
         console.log('TRACKING:', eventName, eventData);
     }
 
+    // Initialize metrics after cookie consent
+    function initMetrics() {
+        loadAnalytics();
+        
+        const trackableElements = document.querySelectorAll('[data-metric]');
+        
+        trackableElements.forEach(element => {
+            element.addEventListener('click', function() {
+                const metricName = this.getAttribute('data-metric');
+                const label = this.getAttribute('data-label') || 'Unknown Button';
+                trackEvent(metricName, {
+                    event_category: 'Button Click',
+                    event_label: label,
+                    page: window.location.pathname
+                });
+            });
+        });
+
+        const startTime = new Date();
+        window.addEventListener('beforeunload', function() {
+            const endTime = new Date();
+            const timeSpent = (endTime - startTime) / 1000; 
+            trackEvent('time_on_page', { 
+                seconds: timeSpent,
+                page: window.location.pathname
+            });
+        });
+    }
+
     // COOKIE NOTICE HANDLING
-    document.addEventListener('DOMContentLoaded', function() {
-        const cookieNotice = document.getElementById('cookieNotice');
-        const acceptBtn = document.getElementById('acceptCookies');
-        const rejectBtn = document.getElementById('rejectCookies');
+    const cookieNotice = document.getElementById('cookieNotice');
+    const acceptBtn = document.getElementById('acceptCookies');
+    const rejectBtn = document.getElementById('rejectCookies');
 
-        // Check if cookie preference is already set
-        if (localStorage.getItem('cookiesAccepted') === null) {
-            // Show the cookie notice
-            cookieNotice.style.display = 'flex';
-        } else {
-            // Initialize metrics if cookies were accepted
-            if (localStorage.getItem('cookiesAccepted') === 'true') {
-                initMetrics();
-            }
-        }
-
-        // Handle accept button click
-        acceptBtn.addEventListener('click', function() {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieNotice.style.display = 'none';
+    if (localStorage.getItem('cookiesAccepted') === null) {
+        cookieNotice.style.display = 'flex';
+    } else {
+        if (localStorage.getItem('cookiesAccepted') === 'true') {
             initMetrics();
-        });
+        }
+    }
 
-        // Handle reject button click
-        rejectBtn.addEventListener('click', function() {
-            localStorage.setItem('cookiesAccepted', 'false');
-            cookieNotice.style.display = 'none';
-        });
+    acceptBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAccepted', 'true');
+        cookieNotice.style.display = 'none';
+        initMetrics();
     });
+
+    rejectBtn.addEventListener('click', function() {
+        localStorage.setItem('cookiesAccepted', 'false');
+        cookieNotice.style.display = 'none';
+    });
+});
+
 </script>
     
 </body>
