@@ -342,27 +342,94 @@
             display: none;
         }
 
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
         .accordion-container {
-            width: 80%;
+            max-width: 800px; /* Adjust max-width as needed */
             margin: 0 auto;
         }
 
-        .accordion-button {
-            display: inline-block;
-            background-color: #c21a1a;
+       .accordion-item {
+            margin-bottom: 10px; /* Space between rows */
+            border: 1px solid #ddd; /* Optional border for the whole item */
+            border-radius: 25px; /* Match button rounding */
+            overflow: hidden; /* Ensures content doesn't spill out during animation */
+            background-color: #fff; /* Background for the item */
+       }
+
+      .accordion-button {
+            display: block; /* Make button take full width */
+            width: 100%;
+            padding: 15px 25px; /* Generous padding */
+            background-color: #b34a09; /* Example blue background */
             color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 30px; /* Fully rounded buttons */
-            font-weight: bold;
-            font-family: 'Comfortaa', sans-serif;
             border: none;
+            text-align: left; /* Align title text to the left */
             cursor: pointer;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            text-align: center;
-            margin-right: 10px;
-        }
+            font-size: 1.1em;
+            outline: none; /* Remove default focus outline */
+            transition: background-color 0.3s ease;
+            position: relative; /* Needed for the indicator */
+            border-radius: 25px; /* Creates the rounded corners */
+      }
+
+      .accordion-button::after {
+           content: '+'; /* Default indicator */
+           font-size: 1.5em;
+           color: white;
+           position: absolute;
+           right: 20px;
+           top: 50%;
+           transform: translateY(-50%);
+           transition: transform 0.3s ease;
+      }
+
+/* Style for the indicator when button is active/panel is open */
+     .accordion-button.active::after {
+           content: '−'; /* Change indicator to minus */
+    /* transform: translateY(-50%) rotate(45deg); If you wanted a rotating plus */
+      }
+
+
+     .accordion-button:hover {
+           background-color: #0056b3; /* Darker blue on hover */
+      }
+
+     .accordion-button.active {
+           background-color: #0056b3; 
+     }
+
+     .accordion-content {
+           background-color: #f9f9f9; /* Slightly different background for content */
+           padding: 0 20px; /* Add padding, but 0 top/bottom initially */
+           max-height: 0; /* Start collapsed */
+           overflow: hidden; /* Hide content that overflows max-height */
+           transition: max-height 0.4s ease-out, padding 0.4s ease-out; /* Smooth transition for height and padding */
+           border-top: 1px solid #eee; /* Separator line when open */
+     }
+
+/* This class will be added by JavaScript to show the content */
+    .accordion-content.show {
+     /* Set max-height large enough for content. JS will override this with exact height */
+          max-height: 500px; /* Adjust if you expect very long content */
+          padding: 15px 20px; /* Add padding back when shown */
+     }
+
+    .accordion-content p,
+    .accordion-content ul {
+          margin-top: 0; /* Remove default top margin */
+          margin-bottom: 15px; /* Space below paragraphs/lists */
+          line-height: 1.6;
+          color: #333;
+    }
+        
+    .accordion-content ul {
+          padding-left: 20px;
+    }
 
         /* Mobile-specific styles */
         .mobile-external-links {
@@ -629,10 +696,6 @@
             <p>
                 Content for section 2. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
-            <ul>
-                <li>List item 1</li>
-                <li>List item 2</li>
-            </ul>
         </div>
     </div>
 
@@ -724,7 +787,36 @@
         });
     });
 
-    // METRICS TRACKING
+    /document.addEventListener('DOMContentLoaded', () => {
+    const accordionButtons = document.querySelectorAll('.accordion-button');
+
+    accordionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const content = button.nextElementSibling; // Get the next element (the content div)
+            const currentlyActiveButton = document.querySelector('.accordion-button.active');
+
+            // If this button is already active, just close it
+            if (button.classList.contains('active')) {
+                button.classList.remove('active');
+                content.style.maxHeight = null; // Use null to revert to CSS's max-height: 0
+                content.classList.remove('show');
+            } else {
+                // If another button is active, close it first (optional: remove this block if you want multiple open)
+                if (currentlyActiveButton) {
+                    currentlyActiveButton.classList.remove('active');
+                    currentlyActiveButton.nextElementSibling.style.maxHeight = null;
+                    currentlyActiveButton.nextElementSibling.classList.remove('show');
+                }
+
+                // Open the clicked button's content
+                button.classList.add('active');
+                content.classList.add('show'); // Add show class first (for padding transition)
+                // Set max-height dynamically based on content's scroll height for smooth animation
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+       
     function loadAnalytics() {
         const script = document.createElement('script');
         script.async = true;
