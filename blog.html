@@ -3,8 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog - The Effective Planner</title>
+    <title>Blog - The Effective Planner</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+        }
+        
+        p {
+            font-family: 'Exo', sans-serif;
+            font-weight: 300;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+         header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-colour: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            padding-bottom: 20px; /* Moves text down */
+            padding-left: 10px; 
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .logo .subtitle {
+            font-size: 0.75rem;
+            font-family: 'Exo', sans-serif;
+            color: #000000;
+            margin-top: 0.2rem;
+        }
+        
+        nav ul {
+           list-style: none; 
+           display: flex;   
+           gap: 20px;
+           padding-right: 10px;
+           margin-top: -10px;
+        }
+
+        nav li a {
+          text-decoration: none;
+          color: #000000;
+          font-family: 'Comfortaa', sans-serif;
+          font-weight: 500;
+          font-size: 1.1rem;
+          padding: 5px 0;
+          transition: color 0.3s ease;
+        }
+
+        nav li a:hover {
+            background-color: #FFDAB9;
+            transform: translateY(-1px);
+        }
 </head>
 <body>
     <header>
